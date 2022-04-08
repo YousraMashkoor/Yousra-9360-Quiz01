@@ -107,7 +107,7 @@ contract AirlineTicketManager{
         owner = payable(msg.sender);
     }
 
-    function createAirlineTicketManager(address payable _owner, uint _economy_price, uint _business_price, uint _first_price, uint _factor) public onlyOwner{
+    function createAirlineTicketManager(address payable _owner) public onlyOwner{
         airlineticketManager = new TicketManager(_owner, 5, 7, 10, 1000);
     }
 }
