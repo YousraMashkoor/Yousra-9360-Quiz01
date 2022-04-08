@@ -59,6 +59,7 @@ contract TicketManager{
 
 
     function createTicket(string memory name, string memory destination, uint ID, classes class) public returns(bool){
+        require(class == classes.FIRST || class == classes.BUSINESS || class == classes.ECONOMY, "Invalid Class Information");
         User memory user = User(name, destination, ID, class);
         users[msg.sender] = user;
         _addUser();
@@ -107,7 +108,7 @@ contract AirlineTicketManager{
     }
 
     function createAirlineTicketManager(address payable _owner, uint _economy_price, uint _business_price, uint _first_price, uint _factor) public onlyOwner{
-        airlineticketManager = new TicketManager(_owner, _economy_price, _business_price, _first_price, _factor);
+        airlineticketManager = new TicketManager(_owner, 5, 7, 10, 1000);
     }
 }
 
